@@ -286,10 +286,18 @@ function VisitDispatcherView() {
               {/* Added explicit problem statement data points */}
               <div className="flex flex-col gap-2 mt-2">
                 <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                  <span className="text-sm font-semibold text-slate-500">Predicted Coordinates</span>
-                  <span className="text-sm font-mono text-slate-800 bg-slate-50 px-2 py-1 rounded border border-slate-200">
-                    {targetLocation.lat.toFixed(5)}, {targetLocation.lng.toFixed(5)}
-                  </span>
+                  <span className="text-sm font-semibold text-slate-500">Predicted Coordinates (X, Y)</span>
+                  <div className="flex flex-col items-end gap-1">
+                    {geocodedData?.cartesian_x != null ? (
+                      <span className="text-sm font-mono text-slate-800 bg-slate-50 px-2 py-1 rounded border border-slate-200">
+                        {geocodedData.cartesian_x.toFixed(1)}, {geocodedData.cartesian_y.toFixed(1)}
+                      </span>
+                    ) : (
+                      <span className="text-sm font-mono text-slate-800 bg-slate-50 px-2 py-1 rounded border border-slate-200">
+                        Not Found
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-slate-100">
                   <span className="text-sm font-semibold text-slate-500">Locality</span>
